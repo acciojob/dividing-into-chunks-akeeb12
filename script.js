@@ -22,8 +22,7 @@ const divide = (arr, n) => {
 	}
 	if(currentSubarray.length) 
 		result.push(currentSubarray);
-		
-};
+	};
 
 const n = prompt("Enter n: ");
 alert(JSON.stringify(divide(arr, n)));
