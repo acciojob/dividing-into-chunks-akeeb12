@@ -1,32 +1,24 @@
-const arr = [1, 2, 3, 4, 1, 0, 2, 2];
+function divide(arr, n) {
+    const result = [];
+    let currentSubarray = [];
+    let currentSum = 0;
 
-const divide = (arr, n) => {
-  // Write your code here
+    for (const num of arr) {
+        if (currentSum + num > n) {
+            result.push(currentSubarray);
+            currentSubarray = [num];
+            currentSum = num;
+        } else {
+            currentSubarray.push(num);
+            currentSum += num;
+        }
+    }
 
-	const result=[];
-	let currentSubarray [];
-	let currentSum  = 0;
+    if (currentSubarray.length) result.push(currentSubarray);
 
-	for(const num of arr)
-	{
-		if(currentSum + sum > n)
-		{
-			result.push(currentSubarray);
-			currentSubarray = [num];
-			currentSum = num;
-		}else
-		{
-			currentSubarray.push(num);
-			currentSum += num;
-		}
-	}
-	if(currentSubarray.length) 
-		result.push(currentSubarray);
-	};
+    return result;
+}
 
-const n = prompt("Enter n: ");
-alert(JSON.stringify(divide(arr, n)));
-
-
-
-
+// Example usage:
+console.log(divide([1, 2, 3, 4, 1, 0, 2, 2], 5));  // Output: [[1, 2], [3], [4, 1, 0], [2, 2]]
+console.log(divide([4, 3, 2, 1], 4));  // Output: [[4], [3], [2], [1]]
